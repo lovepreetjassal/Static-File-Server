@@ -1,5 +1,7 @@
 FROM golang:latest
-COPY ./ /app
 workdir /app
-cmd ["go", "run" ,"."]
+COPY go.mod ./
+COPY *.go ./
+RUN go build -o main .
+CMD ["./main"]
 EXPOSE 80
